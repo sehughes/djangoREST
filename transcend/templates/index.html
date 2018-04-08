@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+{% load static %}
+
+<style>
+ .class.ex1{
+        margin-left: -30px;
+ }
+</style>
+
+{% block content %}
+<body class="ex1">
+    <div class="main-panel jumbotron">
+        <div class="row">
+          <div class="col-lg-11">
+             <div class="container-fluid">
+                <h1 class="info-horizontal">Final Verification Testing</h1>
+                <h2>Riverbed Technology</h2>
+                <h3>Server Class HW - Production Test System</h3>
+                <a href="{% url 'home' %}"> <img src="{% static 'assets/img/riverbed-hq.jpg' %}" height='400' width='700'/></a>
+            </div>
+           </div>
+        </div>
+    </div>
+</body>
+{% endblock %}
