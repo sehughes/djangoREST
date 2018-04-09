@@ -34,3 +34,4 @@ virtualenv==15.1.0
 virtualenvwrapper-win==1.2.5
 win-inet-pton==1.0.1
 wincertstore==0.2
+uWSGI==2.0.15
