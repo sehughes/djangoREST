@@ -2,31 +2,32 @@ from django.shortcuts import render
 
 from rest_framework.views import APIView
 from rest_framework.response import Response
+from rest_framework import status
+from rest_framework import viewsets
 
 from . import serializers
-from rest_framework import status
 
 # Create your views here.
 
 class HelloApiView(APIView):
-    """ Test API View. """
+    """Test API View."""
 
     serializer_class = serializers.HelloSerializer
 
     def get(self, request, format=None):
-        """ Returns a list of API features. """
+        """Returns a list of APIView features."""
 
         an_apiview = [
-         'Uses HTTP methods as fucntion(get, post, patch, put, delete)',
-         'It is similar to a traditional Django view',
-         'Gives you the most control over your logic',
-         'Is mapped manually to URLs'
+            'Uses HTTP methods as function (get, post, patch, put, delete)',
+            'It is similar to a traditional Django view',
+            'Gives you the most control over your logic',
+            'Is mapped manually to URLs'
         ]
 
-        return Response({'message': 'Hello!', 'api_view': an_apiview})
+        return Response({'message': 'Hello!', 'an_apiview': an_apiview})
 
     def post(self, request):
-        """ Create a hello message with our name. """
+        """Create a hello message with our name."""
 
         serializer = serializers.HelloSerializer(data=request.data)
 
@@ -39,16 +40,30 @@ class HelloApiView(APIView):
                 serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
     def put(self, request, pk=None):
-        """ Handles updating an object. """
+        """Handles updating an object."""
 
         return Response({'method': 'put'})
 
     def patch(self, request, pk=None):
-        """ Patch request, only updates fields provided in request. """
+        """Patch request, only updates fields provided in the request."""
 
         return Response({'method': 'patch'})
 
     def delete(self, request, pk=None):
-        """Deletes an object. """
+        """Deletes and object."""
 
         return Response({'method': 'delete'})
+
+class HelloViewSet(viewsets.ViewSet):
+    """Test API ViewSet"""
+
+    def list(self, request):
+        """Return a hello message."""
+
+        a_viewset = [
+            'Uses actions (list, create, retrieve, update, partial_update)'
+            'Automatically maps to URLS using Routers',
+            'Provides more functionality with less code'
+        ]
+
+        return Response({'message': 'Hello!', 'a_viewset': a_viewset})
