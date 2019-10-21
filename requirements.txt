@@ -29,7 +29,7 @@ ruamel-yaml==0.15.35
 six==1.11.0
 sqlparse==0.2.4
 text-unidecode==1.2
-urllib3==1.22
+urllib3==1.24.2
 virtualenv==15.1.0
 virtualenvwrapper-win==1.2.5
 win-inet-pton==1.0.1
